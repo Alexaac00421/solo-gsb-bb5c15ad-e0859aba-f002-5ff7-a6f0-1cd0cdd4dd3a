@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    image: script-mark-migrator:latest
+    container_name: script-mark-migrator
+    ports:
+      - "${HOST_PORT:-3000}:3000"
+    environment:
+      PORT: 3000
+      DB_PATH: /data/app.db
+    volumes:
+      - script-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+volumes:
+  script-data:
