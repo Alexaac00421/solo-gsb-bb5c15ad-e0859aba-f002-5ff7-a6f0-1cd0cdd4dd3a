@@ -1,0 +1,23 @@
+{
+  "name": "script-revision-marker-migration",
+  "version": "1.0.0",
+  "private": true,
+  "description": "剧本修订标记迁移 Web 应用（Node.js + TypeScript + SQLite）",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "npm run build && node dist/server.js",
+    "test": "npm run build && node test/e2e.mjs"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "sql.js": "^1.14.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.4",
+    "@types/sql.js": "^1.4.11",
+    "typescript": "^7.0.2"
+  }
+}
